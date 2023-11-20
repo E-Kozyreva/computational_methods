@@ -1,4 +1,4 @@
-import numpy
+import numpy as np
 from scipy.optimize import linear_sum_assignment
 
 
@@ -8,8 +8,8 @@ class Hungarian:
         self.p_matrix = p_matrix
         self.min_result = 0
         self.max_result = 0
-        self.max_elem = numpy.max(self.p_matrix)
-        self.reverse_p_matrix = numpy.copy(self.p_matrix)
+        self.max_elem = np.max(self.p_matrix)
+        self.reverse_p_matrix = np.copy(self.p_matrix)
 
 
     def _min(self) -> tuple:

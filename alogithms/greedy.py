@@ -10,9 +10,9 @@ class Greedy:
 
     def greedy(self) -> tuple:
         """Возвращает результат и список-перестановку целевой функции, поиск результата с помощью жадного алгоритма."""
+        col_max_index = 0
         for j in range(len(self.p_matrix)):
             col_max = 0
-            col_max_index: int
             for i in range(len(self.p_matrix)):
                 is_took = False
 
@@ -39,6 +39,7 @@ class Greedy:
         saving_steps_completed = 0
 
         for j in range(len(self.p_matrix)):
+            col_max_index, col_min_index = 0, 0
             col_min, col_max = 10, 0
             saving_mode = saving_steps_completed < self.steps
 

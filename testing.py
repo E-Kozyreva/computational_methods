@@ -2,7 +2,6 @@ from alogithms.matrix_sugar import MatrixSugar as ms
 from alogithms.hungarian import Hungarian as hung
 from alogithms.greedy import Greedy as gr
 from alogithms.saving import Saving as sv
-import file_manager as fm
 
 
 if __name__ == '__main__':
@@ -15,25 +14,28 @@ if __name__ == '__main__':
 
 
     # Венгерский минимальный
-    res, indices = hung._min(pt)
-    print(f"hungarian_min: {res}\n{indices}\n\n")
+    h = hung(pt)
+    res, indices = h._min()
+    print(f"hungarian_min: {res}\n{indices}\n")
 
     # Венгерский максимальный
-    res, indices = hung._max(pt)
-    print(f"hungarian_max: {res}\n{indices}\n\n")
+    res, indices = h._max()
+    print(f"hungarian_max: {res}\n{indices}\n")
 
     # Жадный алгоритм
-    res, indices = gr.greedy(pt)
-    print(f"greedy: {res}\n{indices}\n\n")
+    g = gr(p_matrix=pt, steps=1)
+    res, indices = g.greedy()
+    print(f"greedy: {res}\n{indices}\n")
 
     # Жадно-бережливый алгоритм
-    res, indices = gr.greedy_saving(pt, 1)
-    print(f"greedy_saving: {res}\n{indices}\n\n")
+    res, indices = g.greedy_saving()
+    print(f"greedy_saving: {res}\n{indices}\n")
 
     # Бережливый алгоритм
-    res, indices = sv.saving(pt)
-    print(f"saving: {res}\n{indices}\n\n")
+    s = sv(p_matrix=pt, steps=1)
+    res, indices = s.saving()
+    print(f"saving: {res}\n{indices}\n")
 
     # Бережливо-жадный алгоритм
-    res, indices = sv.saving_greedy(pt, 1)
-    print(f"saving_greedy: {res}\n{indices}\n\n")    
+    res, indices = s.saving_greedy()
+    print(f"saving_greedy: {res}\n{indices}")    

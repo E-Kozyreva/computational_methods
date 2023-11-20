@@ -38,6 +38,7 @@ class Saving:
         saving_steps_completed = 0
 
         for j in range(len(self.p_matrix)):
+            col_max_index, col_min_index = 0, 0
             col_min, col_max = 10, 0
             saving_mode = saving_steps_completed < self.steps
 
