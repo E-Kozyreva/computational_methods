@@ -71,13 +71,3 @@ class PMatrix:
             self.p_matrix.append(_str)
 
         return self.p_matrix
-
-
-""" 
-TESTING
-if __name__ == '__main__':
-    a_vector = Vector(5, 0, 1).generate_vector()
-    b_matrix = Matrix(5, 6, 0, 1).generate_matrix()
-    p_matrix = PMatrix(a_vector, b_matrix, True).generate_p_matrix()
-    print(f"Vectir: {a_vector}\n\nMatrix: {b_matrix}\n\nPMatrix: {p_matrix}")
-"""

@@ -2,7 +2,7 @@ import numpy as np
 from scipy.optimize import linear_sum_assignment
 
 
-class Hungarian:
+class Hungarian(object):
 
     def __init__(self, p_matrix: list):
         self.p_matrix = p_matrix

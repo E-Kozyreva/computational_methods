@@ -1,4 +1,4 @@
-class Saving:
+class Saving(object):
 
     def __init__(self, p_matrix: list, steps: int = 0):
         self.p_matrix = p_matrix

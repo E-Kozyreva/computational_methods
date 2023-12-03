@@ -3,16 +3,16 @@ from generator.data import Matrix as M
 from generator.data import PMatrix as PM
 
 
-class MatrixSugar:
+class MatrixSugar(object):
 
-    def __init__(self, size: int, min_start_sugar: float, max_start_sugar: float,
-                 min_degradation: float, max_degradation: float, has_breaking: bool):
-        self.size = size
-        self.min_start_sugar = min_start_sugar
-        self.max_start_sugar = max_start_sugar
-        self.min_degradation = min_degradation
-        self.max_degradation = max_degradation
-        self.has_breaking = has_breaking
+    def __init__(self, size, min_start_sugar, max_start_sugar, 
+                 min_degradation, max_degradation, has_breaking):
+        self.size: int = size
+        self.min_start_sugar: float = min_start_sugar
+        self.max_start_sugar: float = max_start_sugar
+        self.min_degradation: float = min_degradation
+        self.max_degradation: float = max_degradation
+        self.has_breaking: bool = has_breaking
         self.a_vector = []
         self.b_matrix = []
         self.p_matrix = []
