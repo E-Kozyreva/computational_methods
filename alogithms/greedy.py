@@ -1,3 +1,5 @@
+import time
+
 class Greedy(object):
 
     def __init__(self, p_matrix: list, steps: int = 0):
@@ -10,6 +12,7 @@ class Greedy(object):
 
     def greedy(self) -> tuple:
         """Возвращает результат и список-перестановку целевой функции, поиск результата с помощью жадного алгоритма."""
+        start = time.time()
         col_max_index = 0
         for j in range(len(self.p_matrix)):
             col_max = 0
@@ -30,14 +33,17 @@ class Greedy(object):
             self.result += col_max
             self.indices.append(col_max_index)
             self.took.append(col_max_index)
+        end = time.time()
+        wf = open("time/greedy.txt", "a")
+        wf.write(f"{end - start}\n")
         return self.result, self.indices
     
 
     def greedy_saving(self) -> tuple:
         """Возвращает результат и список-перестановку целевой функции, поиск результата с помощью бережливо-жадного алгоритма.\n
             saving_steps - количество шагов в режиме сбережения, далее будет жадный режим."""
+        start = time.time()
         saving_steps_completed = 0
-
         for j in range(len(self.p_matrix)):
             col_max_index, col_min_index = 0, 0
             col_min, col_max = 10, 0
@@ -72,5 +78,8 @@ class Greedy(object):
                 self.took.append(col_max_index)
 
             saving_steps_completed += 1
-
+        
+        end = time.time()
+        wf = open("time/greedy_saving.txt", "a")
+        wf.write(f"{end - start}\n")
         return self.result, self.indices
