@@ -115,6 +115,7 @@ class Testing(object):
 
 
 if __name__ == '__main__':
+    
     path = ["time/hungarian_min_true.txt", "time/hungarian_max_true.txt", 
             "time/hungarian_min_false.txt", "time/hungarian_max_false.txt", 
             "time/greedy_true.txt", "time/greedy_false.txt", 
@@ -126,27 +127,42 @@ if __name__ == '__main__':
         wf = open(i, "w")
         wf.close()
 
-    for i in range(1, 100):
-        t = Testing(size=i, min_start_sugar=1, max_start_sugar=1, min_degradation=0.7, max_degradation=0.7)
+    days = int(input("days: "))
+    min_start_sugar = float(input("min_start_sugar: "))
+    max_start_sugar = float(input("max_start_sugar: "))
+    min_degradation = float(input("min_degradation: "))
+    max_degradation = float(input("max_degradation: "))
+
+
+    for i in range(1, days):
+        t = Testing(size=i, 
+                    min_start_sugar=min_start_sugar, 
+                    max_start_sugar=max_start_sugar, 
+                    min_degradation=min_degradation, 
+                    max_degradation=max_degradation)
         t.test_all()
 
-    """
-    x = np.arange(1, 199)
-    y1 = np.loadtxt("time/hungarian_min.txt")
-    y2 = np.loadtxt("time/hungarian_max.txt")
-    y3 = np.loadtxt("time/greedy.txt")
-    y4 = np.loadtxt("time/saving.txt")
-    y5 = np.loadtxt("time/greedy_saving.txt")
-    y6 = np.loadtxt("time/saving_greedy.txt")
+    x = np.arange(1, days)
+    y1 = np.loadtxt("time/hungarian_min_true.txt")
+    y2 = np.loadtxt("time/hungarian_max_true.txt")
+    y3 = np.loadtxt("time/hungarian_min_false.txt")
+    y4 = np.loadtxt("time/hungarian_max_false.txt")
+    y5 = np.loadtxt("time/greedy_true.txt")
+    y6 = np.loadtxt("time/greedy_false.txt")
+    y7 = np.loadtxt("time/greedy_saving_true.txt")
+    y8 = np.loadtxt("time/greedy_saving_false.txt")
+    y9 = np.loadtxt("time/saving_true.txt")
+    y10 = np.loadtxt("time/saving_false.txt")
+    y11 = np.loadtxt("time/saving_greedy_true.txt")
+    y12 = np.loadtxt("time/saving_greedy_false.txt")
 
-    plt.plot(x, y1, label="hungarian_min")
-    plt.plot(x, y2, label="hungarian_max")
-    plt.plot(x, y3, label="greedy")
-    plt.plot(x, y4, label="saving")
-    plt.plot(x, y5, label="greedy_saving")
-    plt.plot(x, y6, label="saving_greedy")
+    plt.plot(x, y3, label="hungarian_min_false")
+    plt.plot(x, y4, label="hungarian_max_false")
+    plt.plot(x, y6, label="greedy_false")
+    plt.plot(x, y8, label="greedy_saving_false")
+    plt.plot(x, y10, label="saving_false")
+    plt.plot(x, y12, label="saving_greedy_false")
+    plt.legend()
     plt.xlabel("size")
     plt.ylabel("time")
-    plt.legend()
-    plt.show()
-    """
+    plt.savefig("time/time.png")
