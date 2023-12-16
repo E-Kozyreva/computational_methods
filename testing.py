@@ -29,13 +29,26 @@ class Testing(object):
 
         h = hg(pt)
         res, indices = h._min()
+        wfile = open("time/hungarian_min_true.txt", "a")
+        wfile.write(f"{sum(res)}\n")
+        wfile.close()
+
         res, indices = h._max()
+        wfile = open("time/hungarian_max_true.txt", "a")
+        wfile.write(f"{sum(res)}\n")
+        wfile.close()
 
         pf = self.create_matrix(has_breaking=False)
 
         h = hg(pf)
         res, indices = h._min()
+        wfile = open("time/hungarian_min_false.txt", "a")
+        wfile.write(f"{sum(res)}\n")
+        wfile.close()
         res, indices = h._max()
+        wfile = open("time/hungarian_max_false.txt", "a")
+        wfile.write(f"{sum(res)}\n")
+        wfile.close()
 
 
     def test_greedy(self) -> None:
@@ -43,13 +56,25 @@ class Testing(object):
 
         g = gr(p_matrix=pt, steps=1)
         res, indices = g.greedy()
+        wfile = open("time/greedy_true.txt", "a")
+        wfile.write(f"{res}\n")
+        wfile.close()
         res, indices = g.greedy_saving()
+        wfile = open("time/greedy_saving_true.txt", "a")
+        wfile.write(f"{res}\n")
+        wfile.close()
 
         pf = self.create_matrix(has_breaking=False)
 
         g = gr(p_matrix=pf, steps=1)
         res, indices = g.greedy()
+        wfile = open("time/greedy_false.txt", "a")
+        wfile.write(f"{res}\n")
+        wfile.close()
         res, indices = g.greedy_saving()
+        wfile = open("time/greedy_saving_false.txt", "a")
+        wfile.write(f"{res}\n")
+        wfile.close()
 
     
     def test_saving(self) -> None:
@@ -57,13 +82,25 @@ class Testing(object):
 
         s = sv(p_matrix=pt, steps=1)
         res, indices = s.saving()
+        wfile = open("time/saving_true.txt", "a")
+        wfile.write(f"{res}\n")
+        wfile.close()
         res, indices = s.saving_greedy()
+        wfile = open("time/saving_greedy_true.txt", "a")
+        wfile.write(f"{res}\n")
+        wfile.close()
 
         pf = self.create_matrix(has_breaking=False)
 
         s = sv(p_matrix=pf, steps=1)
         res, indices = s.saving()
+        wfile = open("time/saving_false.txt", "a")
+        wfile.write(f"{res}\n")
+        wfile.close()
         res, indices = s.saving_greedy()
+        wfile = open("time/saving_greedy_false.txt", "a")
+        wfile.write(f"{res}\n")
+        wfile.close()
 
     
     def test_all(self) -> None:
@@ -78,9 +115,12 @@ class Testing(object):
 
 
 if __name__ == '__main__':
-    path = ["time/hungarian_min.txt", "time/hungarian_max.txt", 
-            "time/greedy.txt", "time/saving.txt",
-            "time/greedy_saving.txt", "time/saving_greedy.txt"]
+    path = ["time/hungarian_min_true.txt", "time/hungarian_max_true.txt", 
+            "time/hungarian_min_false.txt", "time/hungarian_max_false.txt", 
+            "time/greedy_true.txt", "time/greedy_false.txt", 
+            "time/greedy_saving_true.txt", "time/greedy_saving_false.txt", 
+            "time/saving_true.txt", "time/saving_false.txt", 
+            "time/saving_greedy_true.txt", "time/saving_greedy_false.txt"]
     
     for i in path:
         wf = open(i, "w")
@@ -90,6 +130,7 @@ if __name__ == '__main__':
         t = Testing(size=i, min_start_sugar=1, max_start_sugar=1, min_degradation=0.7, max_degradation=0.7)
         t.test_all()
 
+    """
     x = np.arange(1, 199)
     y1 = np.loadtxt("time/hungarian_min.txt")
     y2 = np.loadtxt("time/hungarian_max.txt")
@@ -108,3 +149,4 @@ if __name__ == '__main__':
     plt.ylabel("time")
     plt.legend()
     plt.show()
+    """
