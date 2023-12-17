@@ -7,20 +7,19 @@
   <li>В папке <code>algorithms</code> хранятся реализованные алгоритмы.</li>
   <li>В папке <code>generator</code> файл <code>data.py</code> генерирует синтетические данные для алгоритмов.</li>
   <li>В папке <code>output</code> хранятся выходные данные после работы алгоритмов.</li>
-  <li>Файл <code>testing.py</code> зпускает тесты для алгоритмов.</li>
+  <li>Файл <code>testing.py</code> запускает тесты для алгоритмов.</li>
 </ul>
 </details>
 
-<details><summary><h2>Запуск на Windows:</h2></summary>
+<details><summary><h2>Запуск:</h2></summary>
+<h3>Windows:</h3>
 <ul>
   <li><code>python -m venv venv</code></li>
   <li><code>venv/Scripts/activate</code></li>
   <li><code>pip install -r requirements.txt</code></li>
   <li><code>python testing.py</code></li>
 </ul>
-</details>
-
-<details><summary><h2>Запуск на Linux:</h2></summary>
+<h3>Linux:</h3>
 <ul>
   <li><code>python3 -m venv venv</code></li>
   <li><code>venv/bin/activate</code></li>
